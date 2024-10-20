@@ -28,7 +28,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'your-development-secret-key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://blog-posts-one.vercel.app/', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1']
 
 
 
@@ -140,7 +140,7 @@ LOGIN_URL = '/accounts/login'  # This is fine if you're using /accounts/login fo
 LOGIN_REDIRECT_URL = 'blog_list'  # Should point to a valid URL pattern name
 LOGOUT_REDIRECT_URL = 'blog_list'  # Also point to a valid URL pattern name
 SITE_ID = 1
-CSRF_TRUSTED_ORIGINS = ['https://blog-posts-one.vercel.app/']
+CSRF_TRUSTED_ORIGINS = ['.vercel.app']
 # Enable HTTPS
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
