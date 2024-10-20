@@ -1,18 +1,16 @@
-
-  {
-    "version": 2,
-    "builds": [
-      { "src": "bloghq/wsgi.py", "use": "@vercel/python" }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "bloghq/wsgi.py"
-      }
-    ],
-    "env": {
-      "DJANGO_SETTINGS_MODULE": "bloghq.bloghq.settings",
-      "PYTHONPATH": "./bloghq"
+{
+  "version": 2,
+  "builds": [
+    { "src": "bloghq/wsgi.py", "use": "@vercel/python" }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "bloghq/wsgi.py"
     }
+  ],
+  "env": {
+    "DJANGO_SETTINGS_MODULE": "bloghq.settings",
+    "PYTHONPATH": "./"
   }
-  
+}
