@@ -15,8 +15,10 @@ Aryan's Project
     <div class="card-body">
       <h5 class="card-title">{{ blog.user.username }}</h5>
       <p class="card-text">{{ blog.text }}</p>
+      {% if blog.user == request.user %}
       <a href="{% url 'blog_update' blog.id %}" class="btn btn-primary">Edit</a>
       <a href="{% url 'blog_delete' blog.id %}" class="btn btn-danger">Delete</a>
+      {% endif %}
     </div>
   </div>
   {% endfor %}
