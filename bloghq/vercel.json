@@ -1,21 +1,13 @@
 {
     "version": 2,
     "builds": [
-      {
-        "src": "manage.py",
-        "use": "@vercel/python",
-        "config": { "zeroConfig": true }
-      }
+      { "src": "bloghq/manage.py", "use": "@vercel/python" }
     ],
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "/manage.py"
+        "dest": "bloghq/manage.py"
       }
-    ],
-    "env": {
-      "DJANGO_SETTINGS_MODULE": "your_project_name.settings",
-      "PYTHONUNBUFFERED": "1"
-    }
+    ]
   }
   
