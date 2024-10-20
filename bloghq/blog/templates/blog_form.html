@@ -16,7 +16,12 @@ Aryan's Project
     Create Blog
     {% endif %}
 
-    <form method="post" enctype="multipart/form-data" class="form"></form>
+    <form method="post" enctype="multipart/form-data" class="form">
+    {% csrf_token %}
     {{form.as_p}}
+    <button class="btn btn-warning" type=submit>Post</button>
+    </form>
+    <a href="{% url 'blog_list'  %}">Back to Blog List</a>
+
 </h2>
 {% endblock %}
