@@ -4,7 +4,8 @@ from .forms import BlogForm, UserRegistrationForm
 from django.shortcuts import get_object_or_404,redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
-
+from django.contrib import messages
+from django.views.decorators.cache import never_cache
 # Create your views here.
 
 def index(request):
@@ -67,7 +68,40 @@ def register(request):
             login(request, user)
             return redirect('blog_list')
     else:
-        form = UserRegistrationForm()  
+        form = UserRegistrationForm()
     return render(request, 'registration/register.html', {'form': form})
 
+def about(request):
+    return render(request, 'about.html')
 
+
+
+
+
+
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.views.decorators.cache import never_cache
+
+@never_cache
+def contact(request):
+    if request.method == 'POST':
+        # Get form data from POST request
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+
+        # Process the form data (e.g., print it or save it)
+        print(f"Name: {name}, Email: {email}, Message: {message}")
+
+        # Add success message to the session
+        messages.success(request, 'Message sent successfully!')
+
+        # Redirect after processing to prevent form resubmission
+        return redirect('contact')
+
+    # Clear the messages manually after they've been displayed
+    response = render(request, 'contact.html')
+    for message in messages.get_messages(request):
+        str(message)  # Access and mark the message as read
+    return response

@@ -1,27 +1,17 @@
-
 {% extends "layout.html" %}
 
-{% block title %}
-Aryan's Project 
-{% endblock %}
-
-
-{% block content%}
-<h1 class="text-center  mt-4">Welcome to our website</h1>
-
-<h2>
-    {%if form.instance.pk%}
-    Edit Blog
-    {% else %}
-    Create Blog
-    {% endif %}
-
-    <form method="post" enctype="multipart/form-data" class="form">
+{% block content %}
+<h2>Create a New Blog</h2>
+<form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{form.as_p}}
-    <button class="btn btn-warning" type=submit>Post</button>
-    </form>
-    <a href="{% url 'blog_list'  %}">Back to Blog List</a>
-
-</h2>
+    <div class="mb-3">
+        <label for="id_text" class="form-label">Blog Text</label>
+        <textarea name="text" class="form-control" id="id_text" rows="4" required></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="id_photo" class="form-label">Upload Photo</label>
+        <input type="file" name="photo" class="form-control" id="id_photo">
+    </div>
+    <button type="submit" class="btn btn-primary">Create Blog</button>
+</form>
 {% endblock %}

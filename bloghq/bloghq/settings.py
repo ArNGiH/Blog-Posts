@@ -129,7 +129,6 @@ MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
 STATIC_URL = '/static/'
 
 STATICFILES_DIR = [os.path.join(BASE_DIR, 'static')]
-
-LOGIN_URL='/accounts/login'
-LOGIN_REDIRECT_URL=''
-LOGOUT_REDIRECT_URL=''
+LOGIN_URL = '/accounts/login'  # This is fine if you're using /accounts/login for login
+LOGIN_REDIRECT_URL = 'blog_list'  # Should point to a valid URL pattern name
+LOGOUT_REDIRECT_URL = 'blog_list'  # Also point to a valid URL pattern name
