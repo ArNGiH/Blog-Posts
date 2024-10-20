@@ -1,0 +1,22 @@
+
+{% extends "layout.html" %}
+
+{% block title %}
+Aryan's Project 
+{% endblock %}
+
+
+{% block content%}
+<h1 class="text-center  mt-4">Welcome to our website</h1>
+
+<h2>
+    {%if form.instance.pk%}
+    Edit Blog
+    {% else %}
+    Create Blog
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data" class="form"></form>
+    {{form.as_p}}
+</h2>
+{% endblock %}

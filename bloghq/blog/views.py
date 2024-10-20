@@ -9,7 +9,7 @@ def index(request):
     return render(request, 'index.html')
 
 def blog_list(request):
-    blogs=Blog.objects.all().order_by(-'created__at')
+    blogs=Blog.objects.all().order_by('-created_at')
     return render(request, 'blog_list.html',{'blogs':blogs})
 
 
