@@ -1,12 +1,12 @@
 {
     "version": 2,
     "builds": [
-      { "src": "bloghq/manage.py", "use": "@vercel/python" }
+      { "src": "bloghq/bloghq/wsgi.py", "use": "@vercel/python" }
     ],
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "bloghq/manage.py"
+        "dest": "bloghq/bloghq/wsgi.py"
       }
     ]
   }
