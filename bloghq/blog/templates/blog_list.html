@@ -14,11 +14,14 @@ Aryan's Project
     <img src="{{ blog.photo.url }}" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">{{ blog.user.username }}</h5>
-      <p class="card-text">{{ blog.text }}</p>
+      <p class="card-text">{{ blog.text|truncatewords:10 }}
+      <br>  <!-- Truncated for a preview -->
+    
       {% if blog.user == request.user %}
-      <a href="{% url 'blog_update' blog.id %}" class="btn btn-primary">Edit</a>
-      <a href="{% url 'blog_delete' blog.id %}" class="btn btn-danger">Delete</a>
+      <a href="{% url 'blog_update' blog.id %}" class="btn btn-primary mb-4">Edit</a>
+      <a href="{% url 'blog_delete' blog.id %}" class="btn btn-danger mb-4">Delete</a>
       {% endif %}
+      <a href="{% url 'blog_detail' blog.id %}" class="btn btn-success">Read more</a></p>  <!-- Link to detail page -->
     </div>
   </div>
   {% endfor %}

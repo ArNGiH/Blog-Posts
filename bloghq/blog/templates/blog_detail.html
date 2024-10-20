@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>{{ blog.user.username }}'s Blog</h1>
+    <p>{{ blog.text }}</p>
+    {% if blog.photo %}
+        <img src="{{ blog.photo.url }}" class="img-fluid" alt="Blog Image">
+    {% endif %}
+
+    <!-- Edit/Delete for the blog owner -->
+    {% if blog.user == request.user %}
+    <a href="{% url 'blog_update' blog.id %}" class="btn btn-primary">Edit</a>
+    <a href="{% url 'blog_delete' blog.id %}" class="btn btn-danger">Delete</a>
+    {% endif %}
+
+    <!-- Load the comments template tags -->
+    {% load comments %}
+
+    <!-- Comment Section -->
+    <h2>Comments</h2>
+    {% render_comment_list for blog %}
+    
+    <h3>Leave a Comment</h3>
+
+    {% if user.is_authenticated %}
+        <!-- Show comment form for logged-in users -->
+        {% render_comment_form for blog %}
+    {% else %}
+        <!-- Show message prompting user to log in -->
+        <p class="text-danger">You need to <a href="{% url 'login' %}">log in</a> to leave a comment.</p>
+    {% endif %}
+</div>
+{% endblock %}

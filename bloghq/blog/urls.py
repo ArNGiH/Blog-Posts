@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path,include
 from django.contrib.auth import views as auth_views
 from . import views
 
@@ -10,7 +10,9 @@ urlpatterns = [
     path('<int:blog_id>/delete/', views.blog_delete, name='blog_delete'),
     path('register/', views.register, name='register'),
     path('about',views.about, name='about'),
-    path('contact',views.contact,name='contact')
+    path('contact',views.contact,name='contact'),
+    path('comments/', include('django_comments.urls')),
+    path('blog/<int:blog_id>/', views.blog_detail, name='blog_detail')
     
   
 ]

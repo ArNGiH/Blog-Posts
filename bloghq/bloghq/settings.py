@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+    'django_comments',  # django-contrib-comments app
+    'django.contrib.sites',  # Add this to enable the sites framework
 ]
 
 MIDDLEWARE = [
@@ -132,3 +134,4 @@ STATICFILES_DIR = [os.path.join(BASE_DIR, 'static')]
 LOGIN_URL = '/accounts/login'  # This is fine if you're using /accounts/login for login
 LOGIN_REDIRECT_URL = 'blog_list'  # Should point to a valid URL pattern name
 LOGOUT_REDIRECT_URL = 'blog_list'  # Also point to a valid URL pattern name
+SITE_ID = 1

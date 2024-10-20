@@ -105,3 +105,8 @@ def contact(request):
     for message in messages.get_messages(request):
         str(message)  # Access and mark the message as read
     return response
+
+
+def blog_detail(request, blog_id):
+    blog = get_object_or_404(Blog, id=blog_id)
+    return render(request, 'blog_detail.html', {'blog': blog})

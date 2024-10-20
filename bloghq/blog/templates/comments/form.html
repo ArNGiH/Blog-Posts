@@ -1,0 +1,33 @@
+{% load comments %}  <!-- Load comments template tags -->
+
+<form action="{% comment_form_target %}" method="post">
+    {% csrf_token %}
+    
+    <!-- Hidden Fields: content_type and object_pk -->
+    {{ form.content_type }}
+    {{ form.object_pk }}
+    {{ form.timestamp }}
+    {{ form.security_hash }}
+
+    {% if user.is_authenticated %}
+        <p>Logged in as {{ user.get_username }}</p>
+    {% else %}
+        <div class="mb-3">
+            <label for="id_name" class="form-label">Name</label>
+            <input type="text" name="name" class="form-control" id="id_name" required>
+        </div>
+    {% endif %}
+    
+    <div class="mb-3">
+        <label for="id_comment" class="form-label">Comment</label>
+        <textarea name="comment" class="form-control" id="id_comment" rows="5" required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit Comment</button>
+    
+    {% if next %}
+    <input type="hidden" name="next" value="{{ next }}">
+    {% else %}
+    <input type="hidden" name="next" value="{% url 'blog_detail' blog.id %}">
+    {% endif %}
+</form>
