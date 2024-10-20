@@ -1,13 +1,16 @@
 {
     "version": 2,
     "builds": [
-      { "src": "bloghq/bloghq/wsgi.py", "use": "@vercel/python" }
+      { "src": "manage.py", "use": "@vercel/python" }
     ],
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "bloghq/bloghq/wsgi.py"
+        "dest": "/manage.py"
       }
-    ]
+    ],
+    "env": {
+      "DJANGO_SETTINGS_MODULE": "bloghq.settings"
+    }
   }
   
