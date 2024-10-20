@@ -20,12 +20,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-f4^l*62#j_$9v=&vyo^eo#5_3sjo2n52lap61w#z-=zkt&qq(5'
+import os
+
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'your-development-secret-key')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://blog-posts-one.vercel.app/', 'localhost', '127.0.0.1']
+
 
 
 # Application definition
@@ -131,7 +135,13 @@ MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
 STATIC_URL = '/static/'
 
 STATICFILES_DIR = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Collect all static files here
 LOGIN_URL = '/accounts/login'  # This is fine if you're using /accounts/login for login
 LOGIN_REDIRECT_URL = 'blog_list'  # Should point to a valid URL pattern name
 LOGOUT_REDIRECT_URL = 'blog_list'  # Also point to a valid URL pattern name
 SITE_ID = 1
+CSRF_TRUSTED_ORIGINS = ['https://blog-posts-one.vercel.app/']
+# Enable HTTPS
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True

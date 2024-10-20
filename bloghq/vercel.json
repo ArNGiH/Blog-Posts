@@ -1,0 +1,21 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "manage.py",
+        "use": "@vercel/python",
+        "config": { "zeroConfig": true }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "/manage.py"
+      }
+    ],
+    "env": {
+      "DJANGO_SETTINGS_MODULE": "your_project_name.settings",
+      "PYTHONUNBUFFERED": "1"
+    }
+  }
+  
