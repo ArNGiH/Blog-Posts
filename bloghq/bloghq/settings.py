@@ -21,7 +21,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog',
+    'bloghq.blog',
     'django_comments',  # django-contrib-comments app
     'django.contrib.sites',  # Add this to enable the sites framework
 ]
@@ -36,7 +36,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'bloghq.urls'
+ROOT_URLCONF = 'bloghq.bloghq.urls'
 
 TEMPLATES = [
     {
@@ -54,7 +54,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'bloghq.wsgi.application'
+WSGI_APPLICATION = 'bloghq.bloghq.wsgi.application'
 
 # Database
 DATABASES = {
@@ -107,10 +107,11 @@ LOGOUT_REDIRECT_URL = 'blog_list'
 SITE_ID = 1
 
 # CSRF and security settings
-CSRF_TRUSTED_ORIGINS = ['.vercel.app']
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+# CSRF_TRUSTED_ORIGINS = []
+SECURE_SSL_REDIRECT = False
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

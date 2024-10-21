@@ -6,9 +6,11 @@ import sys
 
 def main():
     """Run administrative tasks."""
-    sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bloghq.settings')
+    # Add the inner bloghq folder to the Python path
+    sys.path.append(os.path.join(os.path.dirname(__file__), 'bloghq'))
 
+    # Set the default settings module for the project
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bloghq.bloghq.settings')
 
     try:
         from django.core.management import execute_from_command_line
